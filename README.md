@@ -77,27 +77,27 @@ Create a new recommendation listing:
 
 Update a listing's rating:
 ```
-/updateRating/:id
+/rating/:id
 ```
 
 Update a listing's price:
 ```
-/updatePrice/:id
+/price/:id
 ```
 
 Update a listing's review count:
 ```
-/updateReviewCount/:id
+/reviewCount/:id
 ```
 
 Update a listing's title:
 ```
-/updateTitle/:id
+/title/:id
 ```
 
 Add photos to a listing:
 ```
-/addPhotos/:id
+/photos/:id
 ```
 
 **DELETE**
