@@ -11,7 +11,7 @@ Insert instructions here
 What things you need to install the software and how to install them
 
 ```
-NPM install
+npm install
 ```
 
 ### Installing
@@ -35,10 +35,16 @@ npm start
 
 **URL**
 ```
-localhost:3000/listings/:id 
+localhost:3000/listings/:id/recommendations 
 ```
+Example: 
 
-Dynamically render a listing by specified id
+```
+localhost:3000/listings/123/recommendations 
+```
+Returns all the recommendations for the listing 123
+
+
 
 **GET**
 
@@ -48,10 +54,16 @@ Dynamically render a listing by specified id
 /recommendations/:id
 ```
 
+Example:
+
+```
+/recommendations/14
+```
+Returns all the recommendations for the listing number 14.
 
 **POST**
 
-*Create:*
+*Create - POST:*
 
 Create a new recommendation listing:
 
@@ -59,7 +71,9 @@ Create a new recommendation listing:
 /newRecommendation 
 ```
 
-*Update*
+**PUT**
+
+*Update - PUT*
 
 Update a listing's rating:
 ```
@@ -95,6 +109,7 @@ Delete a photo:
 ```
 
 Delete a listing:
+
 ```
 /deleteListing/:id
 ```
