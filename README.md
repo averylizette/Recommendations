@@ -61,10 +61,10 @@ Example:
 ```
 Returns all the recommendations for the listing number 14.
 
-Input (required):
+**Input (required):**
     -listingID INT
 
-Output: 
+**Output:** 
     -Success status code: 200
     -Error status code: 400
     -Datashape: JSON Object
@@ -79,14 +79,14 @@ Create a new recommendation listing:
 /newRecommendation 
 ```
 
-Input (all required):
+**Input (all required):**
     -listingName STRING
     -location STRING
     -price FLOAT
     -ratingCount INT
     -photos ARRAY
 
-Output: 
+**Output:**
     -Success status code: 201
     -Error status code: 400
 
@@ -95,24 +95,16 @@ Output:
 
 *Update - PUT*
 
-Input:
-    -listingID INT
-    -listingName STRING
-
-Output: 
-    -Success status code: 200
-    -Error status code: 400
-
 Update a listing's rating:
 ```
 /rating/:id
 ```
 
-Input (required):
+**Input (required):**
     -listingID INT
     -rating FLOAT
 
-Output: 
+**Output:**
     -Success status code: 200
     -Error status code: 400
 
@@ -121,11 +113,11 @@ Update a listing's price:
 /price/:id
 ```
 
-Input (required):
+**Input (required):**
     -listingID INT
     -price INT
 
-Output: 
+**Output:** 
     -Success status code: 200
     -Error status code: 400
 
@@ -133,11 +125,11 @@ Update a listing's review count:
 ```
 /reviewCount/:id
 ```
-Input (required):
+**Input (required):**
     -listingID INT
     -reviewCount FLOAT
 
-Output: 
+**Output:** 
     -Success status code: 200
     -Error status code: 400
 
@@ -145,11 +137,11 @@ Update a listing's title:
 ```
 /title/:id
 ```
- Input (required):
+ **Input (required):**
     -listingID INT
     -title STRING
 
-Output: 
+**Output:**
     -Success status code: 200
     -Error status code: 400
 
@@ -159,11 +151,11 @@ Add photos to a listing:
 /photos/:id
 ```
 
-Input (required):
+**Input (required):**
     -listingID INT
     - photo STRING
 
-Output: 
+**Output:** 
     -Success status code: 200
     -Error status code: 400
 
@@ -175,11 +167,11 @@ Delete a photo:
 /deletePhoto/:photo/:id
 ```
 
-Input (required):
+**Input (required):**
     -listingID INT
     -photoID INT
 
-Output: 
+**Output:** 
     -Success status code: 200
     -Error status code: 400
 
@@ -188,10 +180,10 @@ Delete a listing:
 ```
 /deleteListing/:id
 ```
-Input (required):
+**Input (required):**
     -listingID INT
 
-Output: 
+**Output:**
     -Success status code: 200
     -Error status code: 400
 
