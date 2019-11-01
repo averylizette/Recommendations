@@ -61,6 +61,14 @@ Example:
 ```
 Returns all the recommendations for the listing number 14.
 
+Input (required):
+    -listingID INT
+
+Output: 
+    -Success status code: 200
+    -Error status code: 400
+    -Datashape: JSON Object
+
 **POST**
 
 *Create - POST:*
@@ -71,34 +79,93 @@ Create a new recommendation listing:
 /newRecommendation 
 ```
 
+Input (all required):
+    -listingName STRING
+    -location STRING
+    -price FLOAT
+    -ratingCount INT
+    -photos ARRAY
+
+Output: 
+    -Success status code: 201
+    -Error status code: 400
+
+
 **PUT**
 
 *Update - PUT*
+
+Input:
+    -listingID INT
+    -listingName STRING
+
+Output: 
+    -Success status code: 200
+    -Error status code: 400
 
 Update a listing's rating:
 ```
 /rating/:id
 ```
 
+Input (required):
+    -listingID INT
+    -rating FLOAT
+
+Output: 
+    -Success status code: 200
+    -Error status code: 400
+
 Update a listing's price:
 ```
 /price/:id
 ```
 
+Input (required):
+    -listingID INT
+    -price INT
+
+Output: 
+    -Success status code: 200
+    -Error status code: 400
+
 Update a listing's review count:
 ```
 /reviewCount/:id
 ```
+Input (required):
+    -listingID INT
+    -reviewCount FLOAT
+
+Output: 
+    -Success status code: 200
+    -Error status code: 400
 
 Update a listing's title:
 ```
 /title/:id
 ```
+ Input (required):
+    -listingID INT
+    -title STRING
+
+Output: 
+    -Success status code: 200
+    -Error status code: 400
+
 
 Add photos to a listing:
 ```
 /photos/:id
 ```
+
+Input (required):
+    -listingID INT
+    - photo STRING
+
+Output: 
+    -Success status code: 200
+    -Error status code: 400
 
 **DELETE**
 
@@ -108,12 +175,25 @@ Delete a photo:
 /deletePhoto/:photo/:id
 ```
 
+Input (required):
+    -listingID INT
+    -photoID INT
+
+Output: 
+    -Success status code: 200
+    -Error status code: 400
+
 Delete a listing:
 
 ```
 /deleteListing/:id
 ```
+Input (required):
+    -listingID INT
 
+Output: 
+    -Success status code: 200
+    -Error status code: 400
 
 End with an example of getting some data out of the system or using it for a little demo
 
