@@ -5,7 +5,8 @@ const app = express()
 const port = 9004
 const bodyParser = require("body-parser");
 
-// app.get('/', (req, res) => res.send('Hello World!'))
+
+
 app.use(bodyParser.json())
 app.use(cors());
 app.use('/', express.static(path.join(__dirname, '../client/dist')))

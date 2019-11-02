@@ -1,11 +1,12 @@
 {
   "name": "recommendations",
   "version": "1.0.0",
-  "description": "Senior project Front-End Capstone",
+  "description": "System Design Capstone",
   "main": "index.js",
   "scripts": {
     "schema": "mysql -u root < ./schema.sql",
     "seedData": "node ./database/seed.js",
+    "seedPostgres": "node ./database/seedPostgres.js",
     "react-dev": "webpack -d -w",
     "start": "nodemon ./server/index.js",
     "lint": "eslint ./"
