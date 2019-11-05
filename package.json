@@ -5,8 +5,8 @@
   "main": "index.js",
   "scripts": {
     "schema": "mysql -u root < ./schema.sql",
-    "seedData": "node ./database/seed.js",
-    "seedPostgres": "node ./database/seedPostgres.js",
+    "generate-Cassandra": "node ./database/generatedata/cassandra.js",
+    "generate-Postgres": "node ./database/generatedata/postgres.js",
     "react-dev": "webpack -d -w",
     "start": "nodemon ./server/index.js",
     "lint": "eslint ./"
