@@ -1,41 +1,14 @@
-var mysql = require('mysql');
-const request = require('request');
-var parseString = require('xml2js').parseString;
+const cassandra = require('cassandra-driver');
+const client = new cassandra.Client({ contactPoints: ['127.0.0.1'], localDataCenter: 'datacenter1', keyspace: 'recommendations' });
 
 
-var connection = mysql.createConnection({   
-  // host     : '13.56.204.195',
-  user     : 'root',
-  password : '',
-  // password : 'password',
-  database : 'recommendations' 
-});
- 
-connection.connect((err) => {
-  if (err) {
-    console.error('error connecting from DATABASE index.js: ', err);
-    return;
-  }
- 
-  console.log('DATABASE IS CONNECTING');  
-  //
-})
-   
-module.exports = connection; 
 
-// var xml;
-// var xmlArr;
+var getPriceAndLocation = (listingid, callback) => {
+  const query = 'SELECT * FROM lookup WHERE listingid = ?';
+  client.execute(query, [ listingid ], {prepare: true}, callback)
+}
 
-// request('http://s3-us-west-1.amazonaws.com/air6n6pictures', function(error, response, body) {
-//   console.log('error', error);
-//   console.log('statusCode', response && response.StatusCode); 
-//   xml = body
-//   // console.log('xml', xml)
-//   parseString(xml, function(err, results){ 
-//     // console.log(results.ListBucketResult.Contents)
-//     xmlArr = results.ListBucketResult.Contents
-//   })
 
-// });
 
-// https://air6n6pictures.s3-us-west-1.amazonaws.com/   append key 1.png
+
+module.exports = {getPriceAndLocation}

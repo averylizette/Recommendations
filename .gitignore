@@ -1,9 +1,8 @@
 /node_modules
 
-Cass.csv
+database/generatedata/everythingpostgres
 
-CasTable1.csv
 
-postgresGenInfo.csv
-
-postgresPhotos.csv
+database/generatedata/cassandraDataGeneration/Cass.csv
+database/generatedata/cassandraDataGeneration/CasTable1.csv
+database/generatedata/cassandraDataGeneration/citiesArray.js

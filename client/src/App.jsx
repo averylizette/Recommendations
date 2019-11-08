@@ -11,17 +11,7 @@ const MainWrapper = styled.div`
   // flex-direction: row;
   // flex:1;
 `;
-// const PrevDiv = styled.div`
-//   position: absolute;
-//   margin: auto;
-//   height:420px;
 
-// `;
-
-// const PrevButton:after 
-// const ArrowContainer = styled.div`
-//   position:absolute;
-// `
 
 const Container = styled.div`
   width: 915px;
@@ -41,14 +31,7 @@ const ListingsDiv = styled.div`
   height: 350px;
   list-style:none;
 `;
-// const NextDiv = styled.div`
-// position: absolute;
-// display:inline-block
-// text-align: right;
-// top: 0;
-// left: 88%;
-// height: 420px;
-// `;
+
 const PrevButton = styled.button` 
   position: absolute;
   display: inline-block;
@@ -81,6 +64,7 @@ const Title = styled.h2`
   padding-left:7.5px;
 
 `;
+
 class Recommendation extends React.Component {
   constructor (props) {
     super(props);

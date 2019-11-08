@@ -7,6 +7,10 @@
     "schema": "mysql -u root < ./schema.sql",
     "generate-Cassandra": "node ./database/generatedata/cassandra.js",
     "generate-Postgres": "node ./database/generatedata/postgres.js",
+    "p1": "node ./database/generatedata/genPhotos/photos1.js",
+    "p2": "node ./database/generatedata/genPhotos/photos2.js",
+    "p3": "node ./database/generatedata/genPhotos/photos3.js",
+    "testphotos": "node ./database/generatedata/genPhotos/cassphotos.js",
     "react-dev": "webpack -d -w",
     "start": "nodemon ./server/index.js",
     "lint": "eslint ./"
@@ -34,6 +38,7 @@
   "dependencies": {
     "axios": "^0.19.0",
     "body-parser": "^1.19.0",
+    "cassandra-driver": "^4.3.1",
     "cors": "^2.8.5",
     "express": "^4.17.1",
     "faker": "^4.1.0",
