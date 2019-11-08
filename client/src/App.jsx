@@ -78,20 +78,14 @@ class Recommendation extends React.Component {
     this.nextThree = this.nextThree.bind(this);
     this.prevThree = this.prevThree.bind(this);
     this.handlePopup = this.handlePopup.bind(this);
-    // this.currentThreeListings = this.currentThreeListings.bind(this);
   }
 
   componentDidMount () {
-    // let id = window.location.href.split('/')[4];
-    // axios.get("/currentListing", {params: {id:id}}).then(result => {
-    //   let listing = result.data[0];
-    //   console.log(results.data)
-    //   // callback(listing)
-    // });
-    axios.get("http://13.56.204.195:9004/allHomes")
-    // axios.get('http://localhost:9004/allHomes')
-      .then((res) => {console.log(res.data);
-        this.setState({allListings: res.data})})
+    axios.get("/priceAndLocation")
+      .then((res) => {
+        console.log(res.data);
+        //this.setState({allListings: res.data})
+      })
       .catch((err)=> console.log('error from CLIENT AXIOS ************ req', err));
  
   }
