@@ -2,11 +2,11 @@ var faker = require('faker');
 const fs = require('fs');
 const casData = fs.createWriteStream('Casstest.csv');
 const cities = require('./citiesArray.js').cities
-casData.write('price,location,listingid,title,reviewCount,rating,type,photos\n', 'utf8');
+casData.write('price,location,listingid,updatedprice,title,reviewCount,rating,type,photos\n', 'utf8');
 
 
 const table1 = fs.createWriteStream('CasTable1test.csv');
-table1.write('listingId,location,price\n', 'utf8');
+table1.write('listingId,location,price,updatedprice\n', 'utf8');
 
 
 imageArr1 = `"['https://loremflickr.com/320/240/apartment', 'https://loremflickr.com/320/240/apartment', 'https://loremflickr.com/320/240/apartment']"`
@@ -36,8 +36,9 @@ function writeTenMillionUsers(writer, encoding, callback, writer2) {
       const index = faker.random.number({min:0, max:4});
       const imageSet = images[index]
       const type = listingTypes[index]
-      const data = `${price},${location},${id},${title},${reveiwCount},${rating},${type},${imageSet}\n`;
-      const data2 = `${id},${price},${location}\n`;
+      const updatedPrice = 0;
+      const data = `${price},${location},${id},${updatedPrice},${title},${reveiwCount},${rating},${type},${imageSet}\n`;
+      const data2 = `${id},${price},${location},${updatedPrice}\n`;
       if (i === 0) {
         writer.write(data, encoding, callback);
         writer2.write(data2, encoding, callback);

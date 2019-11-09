@@ -3,19 +3,19 @@ const client = new cassandra.Client({ contactPoints: ['127.0.0.1'], localDataCen
 const id = 10000000
 
 
-var getPriceAndLocation = (listingid, callback) => {
+const getPriceAndLocation = (listingid, callback) => {
   let query = 'SELECT * FROM lookup WHERE listingid = ?';
   client.execute(query, [ listingid ], {prepare: true}, callback)
 }
 
 var recommendations = (location, price, callback) => {
-  let query = 'SELECT * FROM geninfo WHERE price >= ? AND location=? LIMIT 12 ALLOW FILTERING';
+  let query = 'SELECT * FROM geninfo WHERE price >= ? AND location= ? LIMIT 12 ALLOW FILTERING';
   client.execute(query, [ price, location ], {prepare: true}, callback);
 }
 
 
-var post = (listing, callback) => {
-  const queries = [
+const post = (listing, callback) => {
+  let queries = [
     {
       query: 'INSERT INTO lookup (listingID, price, location) VALUES (?,?,?)',
       params: [ listing.id, listing.price, listing.location ]
@@ -28,8 +28,25 @@ var post = (listing, callback) => {
   client.batch(queries, { prepare: true }, callback)
 }
 
+const updatePrice = (updatedInfo, callback) => {
+  let queries = [
+    {
+      query: 'UPDATE lookup SET price = ? WHERE listingid = ?;',
+      params: [ updatedInfo.price, updatedInfo.listingid]
+    },
+    {
+      query: 'UPDATE geninfo SET price = ? WHERE listingid = ?;',
+      params: [ updatedInfo.price, updatedInfo.listingid]
+    }
+  ];
+  client.batch(queries, { prepare: true }, callback)
+}
+
+const updateTitle = (updatedInfo, callback) => {
+  let query = 'UPDATE geninfo SET title = ? WHERE listingid = ? AND location = ? AND price = ?;'
+  client.execute(query, [ updatedInfo.title, updatedInfo.listingid, updatedInfo.location, updatedInfo.price ], {prepare: true}, callback);
+}
 
 
 
-
-module.exports = {getPriceAndLocation, recommendations, post}
+module.exports = {getPriceAndLocation, recommendations, post, updatePrice, updateTitle}

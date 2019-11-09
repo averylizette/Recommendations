@@ -5,11 +5,7 @@
   "main": "index.js",
   "scripts": {
     "schema": "mysql -u root < ./schema.sql",
-    "generate-Cassandra": "node ./database/generatedata/cassandra.js",
-    "generate-Postgres": "node ./database/generatedata/postgres.js",
-    "p1": "node ./database/generatedata/genPhotos/photos1.js",
-    "p2": "node ./database/generatedata/genPhotos/photos2.js",
-    "p3": "node ./database/generatedata/genPhotos/photos3.js",
+    "generate-Cassandra": "node /Users/averylizette/Desktop/Recommendations/database/generatedata/cassandraDataGeneration/cassandra.js",
     "testphotos": "node ./database/generatedata/genPhotos/cassphotos.js",
     "react-dev": "webpack -d -w",
     "start": "nodemon ./server/index.js",
