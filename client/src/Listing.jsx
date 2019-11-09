@@ -136,14 +136,14 @@ function Listing (props) {
         <InnerRight>&#8250;</InnerRight>
         <FavsButton >&#9825; </FavsButton>
       </PicsCarouselWrapper>
-      <TypeCity> {props.listing.homeType} • {props.listing.cityName} </TypeCity>
+      <TypeCity> {props.listing.type} • {props.listing.location} </TypeCity>
       <Title> {props.listing.title} </Title>
       <Price> ${props.listing.price}/night </Price>
       <DivImage>
         <SpanImage>
           <Star src="https://cdn10.bigcommerce.com/s-npe4l/products/1418/images/2090/M-REC-DGRSTAR---HIGH__37390.1531409269.100.100.jpg?c=2"></Star>
         </SpanImage><Reviews> 
-        <Rating>{props.listing.rating}</Rating> ({props.listing.reviewCount}) </Reviews>
+        <Rating>{props.listing.rating}</Rating> ({props.listing.reviewcount}) </Reviews>
       </DivImage>
     </Wrapper>
   )

@@ -9,11 +9,18 @@ const recommendations = require('../database/index.js').recommendations;
 
 app.use(bodyParser.json())
 app.use(cors());
-app.use('/', express.static(path.join(__dirname, '../client/dist')))
-app.use('/air6n6/*/listing', express.static(path.join(__dirname, '/../client/dist')))
 
-app.get('/priceAndLocation', (req, res) => {
-    getPriceAndLocation(4, (err, data) => {
+app.use('/', express.static(path.join(__dirname, '../client/dist')))
+
+//app.use('/:listingid', express.static('public'));
+
+// app.use('/:listingid', express.static('public'));
+
+//app.use('/air6n6/*/listing', express.static(path.join(__dirname, '/../client/dist')))
+
+app.get('/recommendations/:listingid', (req, res) => {
+    console.log('hitting here', req.params.listingid)
+    getPriceAndLocation(req.params.listingid, (err, data) => {
         if (err) {
             console.log('price and location error in server index.js')
             res.send(err)
@@ -24,6 +31,7 @@ app.get('/priceAndLocation', (req, res) => {
                     console.log('err from recommendations retrieval:', err)
                 } else {
                     res.send(data.rows)
+                    res.end()
                     console.log('successful recommendations retrieval')
                 }
             })

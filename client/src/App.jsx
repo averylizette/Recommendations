@@ -58,7 +58,6 @@ const NextButton = styled.button`
 
 `;
 
-
 const Title = styled.h2`
   text-align: left;
   padding-left:7.5px;
@@ -69,6 +68,7 @@ class Recommendation extends React.Component {
   constructor (props) {
     super(props);
     this.state = {
+      listingId: 8,
       currIndex: 0,
       currListing: [],
       allListings: [],
@@ -81,34 +81,23 @@ class Recommendation extends React.Component {
   }
 
   componentDidMount () {
-    axios.get("/priceAndLocation")
+    axios.get(`recommendations/${this.state.listingId}`)
       .then((res) => {
-        console.log(res.data);
-        //this.setState({allListings: res.data})
+        console.log('component did mount res data:',res.data);
+        console.log('hi')
+        this.setState({allListings: res.data})
       })
       .catch((err)=> console.log('error from CLIENT AXIOS ************ req', err));
- 
   }
 
-  // refreshThreeListings () {
-  //   const threeListings = this.state.allListings.slice(0, 3);
-  //   this.setState({pageListings: threeListings});
-  // }
-
   nextThree (event) {
-    // event.preventDefault();
     const newIndex = this.state.currIndex+1;
     this.setState({currIndex:newIndex});
-    // const threeListings = this.state.allListings.slice(newIndex, newIndex+3);
-    // this.setState({pageListings: threeListings, currIndex:newIndex});
   }
 
   prevThree (event) {
-    // event.preventDefault();
     const newIndex = this.state.currIndex-1;
-    // const threeListings = this.state.allListings.slice(newIndex, newIndex+3);
     this.setState({currIndex:newIndex});
-    // this.setState({pageListings: threeListings, currIndex:newIndex});
   }
 
   handlePopup (boolean) {
@@ -118,21 +107,6 @@ class Recommendation extends React.Component {
 
   render() {
     return (
-      // <MainWrapper>
-      //   <PrevDiv className="innerdiv">
-      //     <PrevButton id="outterLeftArrow" onClick={() => this.prevThree()} disabled={this.state.currIndex===0}> &#8249; </PrevButton>
-      //   </PrevDiv>
-      //   <Container>
-      //     <Title>More homes you may like</Title>
-      //     <ListingsDiv>
-
-      //     <Listings allListings={this.state.allListings} currIndex={this.state.currIndex}/>
-      //     </ListingsDiv>
-      //   </Container>
-      //   <NextDiv>   
-      //     <NextButton id="outterRightArrow" onClick={()=>this.nextThree()} disabled={this.state.currIndex === this.state.allListings.length-3}> &#8250; </NextButton>
-      //   </NextDiv>
-      // </MainWrapper>
       <MainWrapper>
         <PrevButton id="outterLeftArrow" onClick={() => this.prevThree()} disabled={this.state.currIndex===0}> &#8249; </PrevButton>
         <Container>
