@@ -68,7 +68,6 @@ class Recommendation extends React.Component {
   constructor (props) {
     super(props);
     this.state = {
-      listingId: 8,
       currIndex: 0,
       currListing: [],
       allListings: [],
@@ -81,10 +80,9 @@ class Recommendation extends React.Component {
   }
 
   componentDidMount () {
-    axios.get(`recommendations/${this.state.listingId}`)
+    console.log(this.props.listingId)
+    axios.get(`/recommendations/${this.props.listingId}`)
       .then((res) => {
-        console.log('component did mount res data:',res.data);
-        console.log('hi')
         this.setState({allListings: res.data})
       })
       .catch((err)=> console.log('error from CLIENT AXIOS ************ req', err));

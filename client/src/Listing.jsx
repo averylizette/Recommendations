@@ -119,10 +119,9 @@ const FavsButton = styled.button`
 function Listing (props) {
   return (
     <Wrapper>
-      {/* {this.state.displayPopup ? (<Favorites handlePopup={props.handlePopup}/>) : null} */}
       <PicsCarouselWrapper>
         <div>
-          <Image src="https://s7d4.scene7.com/is/image/roomandboard/wyatt_438274_19e_g?scl=1&size=804,1000&$mobile$" ></Image>
+          <Image src={props.listing.photos[0]} ></Image>
         </div>
         <Nav>
           <Bubbles></Bubbles>
