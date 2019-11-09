@@ -83,6 +83,7 @@ class Recommendation extends React.Component {
     console.log(this.props.listingId)
     axios.get(`/recommendations/${this.props.listingId}`)
       .then((res) => {
+        //console.log(res.data)
         this.setState({allListings: res.data})
       })
       .catch((err)=> console.log('error from CLIENT AXIOS ************ req', err));

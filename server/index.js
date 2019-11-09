@@ -6,6 +6,8 @@ const port = 3000
 const bodyParser = require("body-parser");
 const getPriceAndLocation = require('../database/index.js').getPriceAndLocation;
 const recommendations = require('../database/index.js').recommendations;
+const post = require('../database/index.js').post;
+let id = 10000001;
 
 app.use(bodyParser.json())
 app.use(cors());
@@ -34,11 +36,31 @@ app.get('/recommendations/:listingid', (req, res) => {
     })
 }); 
 
+// var string = JSON.stringify({
+//     listingid: 8070945,
+//     location: "East Orange",
+//     photos: ["https://loremflickr.com/320/240/apartment", "https://loremflickr.com/320/240/apartment", "https://loremflickr.com/320/240/apartment", "https://loremflickr.com/320/240/apartment", "https://loremflickr.com/320/240/apartment", "https://loremflickr.com/320/240/apartment", "https://loremflickr.com/320/240/apartment", "https://loremflickr.com/320/240/apartment", "https://loremflickr.com/320/240/apartment"],
+//     price: 331,
+//     rating: 4.039999961853027,
+//     reviewcount: 75,
+//     title: "nam et rerum",
+//     type: "private room"
+//     });
 
+//     console.log(string)
 
 app.post('/newListing', (req, res) => {
-    console.log(req.body, 'rec body')
-    res.send('lulululu')
+    let listing = Object.assign({}, req.body);
+    listing.id=id.toString();
+    
+    post(listing, (err, response) => {
+       if (err) {
+           res.status(400).send("Error posting listing to database.")
+       } else {
+           id++;
+           res.status(201).send('Successfully added listing to database')
+       }
+    })
 })
 
 
