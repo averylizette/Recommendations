@@ -17,12 +17,12 @@ var recommendations = (location, price, callback) => {
 const post = (listing, callback) => {
   let queries = [
     {
-      query: 'INSERT INTO lookup (listingID, price, location) VALUES (?,?,?)',
-      params: [ listing.id, listing.price, listing.location ]
+      query: 'INSERT INTO lookup (listingID, location, price, updatedprice) VALUES (?,?,?,?)',
+      params: [ listing.id, listing.location, listing.price, listing.updatedprice ]
     },
     {
-      query: 'INSERT INTO geninfo (price, location, listingid, title, reviewcount, rating, type, photos) VALUES (?, ?, ?, ?, ?, ?, ?, ?)',
-      params: [ listing.price, listing.location, listing.id, listing.title, listing.reviewcount, listing.rating, listing.type, listing.photos ]
+      query: 'INSERT INTO geninfo (price, location, listingid, photos, rating, reviewcount, title, type, updatedprice) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)',
+      params: [ listing.price, listing.location, listing.id, listing.photos, listing.rating, listing.reviewcount, listing.title, listing.type, listing.updatedprice]
     }
   ];
   client.batch(queries, { prepare: true }, callback)
@@ -49,4 +49,19 @@ const updateTitle = (updatedInfo, callback) => {
 
 
 
-module.exports = {getPriceAndLocation, recommendations, post, updatePrice, updateTitle}
+const deleteListing = (updatedInfo, callback) => {
+  let queries = [
+    {
+      query: 'DELETE FROM lookup WHERE listingid = ?;',
+      params: [ updatedInfo.listing, updatedInfo.listingid]
+    },
+    {
+      query: 'DELETE FROM geninfo WHERE price = ? AND location = ? AND listingid = ?;',
+      params: [ updatedInfo.price, updatedInfo.location, updatedInfo.listingid]
+    }
+  ];
+  client.batch(queries, { prepare: true }, callback)
+}
+
+
+module.exports = {getPriceAndLocation, recommendations, post, updatePrice, updateTitle, deleteListing}

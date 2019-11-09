@@ -49,26 +49,26 @@ app.get('/recommendations/:listingid', (req, res) => {
 
 
 
+
 app.post('/newListing', (req, res) => {
     let listing = Object.assign({}, req.body);
-    listing.id=id.toString();
-    
+    listing.id = id.toString();
+    listing.updatedprice = 0;
+
+  
     db.post(listing, (err, response) => {
        if (err) {
-           res.status(400).send("Error posting listing to database.")
+             res.status(400).send("Error posting listing to database.")
+             console.log('error response', err)
        } else {
+        console.log('success response', response)
+        res.send("yup")
            id++;
-           res.status(201).send('Successfully added listing to database')
+         res.status(201).send('Successfully added listing to database')
        }
     })
 })
 
-var string = JSON.stringify({
-    listingid: 8070945,
-    price: 123
-    });
-
-    console.log(string)
 
 // app.put('/updatePrice', (req, res) => {
 //     // console.log('hitting here')
@@ -96,8 +96,16 @@ app.put('/updateTitle', (req, res) => {
 
 
 
-app.put('/', (req, res) => {
-    
+app.delete('/deleteListing', (req, res) => {
+    db.deleteListing(req.body, (err, data) => {
+        if (err) {
+            console.log("There was a problem deleting your listing")
+            res.status(400).send("There was a problem deleting your listing")
+        } else {
+            res.status(200).send("You deleted your listing")
+            console.log("Successfully deleted your listing")
+        }
+    })
 })
 
 
