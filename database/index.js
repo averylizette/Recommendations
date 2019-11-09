@@ -53,7 +53,7 @@ const deleteListing = (updatedInfo, callback) => {
   let queries = [
     {
       query: 'DELETE FROM lookup WHERE listingid = ?;',
-      params: [ updatedInfo.listing, updatedInfo.listingid]
+      params: [ updatedInfo.listingid]
     },
     {
       query: 'DELETE FROM geninfo WHERE price = ? AND location = ? AND listingid = ?;',

@@ -58,13 +58,10 @@ app.post('/newListing', (req, res) => {
   
     db.post(listing, (err, response) => {
        if (err) {
-             res.status(400).send("Error posting listing to database.")
-             console.log('error response', err)
+        res.status(400).send("Error posting listing to database.")
        } else {
-        console.log('success response', response)
-        res.send("yup")
-           id++;
-         res.status(201).send('Successfully added listing to database')
+        id++;
+        res.status(201).send('Successfully added listing to database')
        }
     })
 })
@@ -86,7 +83,7 @@ app.post('/newListing', (req, res) => {
 app.put('/updateTitle', (req, res) => {
     db.updateTitle(req.body, (err, data) => {
         if (err) {
-            console.log('error!!!:', err)
+            console.log('error updating title!!!:', err)
             res.status(400).send("Failed to update your listing's title");
         } else {
             res.status(200).send("Updated your listing's title");
@@ -99,7 +96,7 @@ app.put('/updateTitle', (req, res) => {
 app.delete('/deleteListing', (req, res) => {
     db.deleteListing(req.body, (err, data) => {
         if (err) {
-            console.log("There was a problem deleting your listing")
+            console.log("There was a problem deleting your listing", err)
             res.status(400).send("There was a problem deleting your listing")
         } else {
             res.status(200).send("You deleted your listing")
