@@ -2,5 +2,5 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import Recommendation from './App.jsx';
 
-
-ReactDOM.render(<Recommendation />, document.getElementById('Recommendation'));
+var listingId = location.pathname.replace(/\//g, '');
+ReactDOM.render(<Recommendation listingId={listingId}/>, document.getElementById('Recommendation'));
