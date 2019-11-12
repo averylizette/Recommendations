@@ -16,7 +16,7 @@ app.use(function(req, res, next) {
     next();
   });
 
-app.use('/', express.static(path.join(__dirname, '../client/dist')));
+ app.use('/', express.static(path.join(__dirname, '../client/dist')));
 app.use('/:listingid', express.static(path.join(__dirname, '../client/dist')))
 
 

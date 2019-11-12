@@ -4,4 +4,4 @@ database/generatedata/everythingpostgres
 
 database/generatedata/cassandraDataGeneration/geninfo.csv
 database/generatedata/cassandraDataGeneration/lookup.csv
-database/generatedata/cassandraDataGeneration/citiesArray.js
+

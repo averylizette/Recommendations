@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "schema": "mysql -u root < ./schema.sql",
-    "generate-Cassandra": "node /Users/averylizette/Desktop/Recommendations/database/generatedata/cassandraDataGeneration/cassandra.js",
+    "generate-Cassandra": "node /database/generatedata/cassandraDataGeneration/cassandra.js",
     "testphotos": "node ./database/generatedata/genPhotos/cassphotos.js",
     "react-dev": "webpack -d -w",
     "start": "nodemon ./server/index.js",
