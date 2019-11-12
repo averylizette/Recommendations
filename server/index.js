@@ -1,3 +1,5 @@
+require('newrelic');
+
 const express = require('express');
 const path = require('path')
 const cors = require('cors');
@@ -6,27 +8,33 @@ const port = 3000
 const bodyParser = require("body-parser");
 const db = require('../database/index.js')
 let id = 10000001;
-
 app.use(bodyParser.json())
 app.use(cors());
+app.use(function(req, res, next) {
+    res.header("Access-Control-Allow-Origin", "*"); // update to match the domain you will make the request from
+    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+    next();
+  });
 
-//app.use('/', express.static(path.join(__dirname, '../client/dist')));
+app.use('/', express.static(path.join(__dirname, '../client/dist')));
 app.use('/:listingid', express.static(path.join(__dirname, '../client/dist')))
+
+
 
 app.get('/recommendations/:listingid', (req, res) => {
     console.log(req.params.listingid);
     db.getPriceAndLocation(req.params.listingid, (err, data) => {
         if (err) {
             console.log('price and location error in server index.js')
-            res.send(err)
+            res.status(400).send(err)
         } else {
             db.recommendations(data.rows[0].location, data.rows[0].price, (err, data) => {
                 if (err) {
                     res.send(err)
                     console.log('err from recommendations retrieval:', err)
                 } else {
-                    res.send(data.rows)
-                    res.end()
+                    res.status(200).send(data.rows)
+                   // res.end()
                     console.log('successful recommendations retrieval')
                 }
             })

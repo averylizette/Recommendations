@@ -81,7 +81,7 @@ class Recommendation extends React.Component {
 
   componentDidMount () {
     console.log(this.props.listingId)
-    axios.get(`/recommendations/${this.props.listingId}`)
+    axios.get(`http://18.222.177.226/recommendations/${this.props.listingId}`)
       .then((res) => {
         //console.log(res.data)
         this.setState({allListings: res.data})
