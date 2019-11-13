@@ -4,4 +4,7 @@ database/generatedata/everythingpostgres
 
 database/generatedata/cassandraDataGeneration/geninfo.csv
 database/generatedata/cassandraDataGeneration/lookup.csv
+database/generatedata/cassandraDataGeneration/lookup100.csv
+database/generatedata/cassandraDataGeneration/geninfo100.csv
+insert-seed.cql
 
