@@ -1,7 +1,7 @@
 DROP KEYSPACE IF EXISTS recommendations;
 
 CREATE KEYSPACE recommendations
-WITH replication = {'class':'SimpleStrategy', 'replication_factor' : 3};
+WITH replication = {'class':'SimpleStrategy', 'replication_factor' : 1};
 
 USE recommendations;
 
@@ -31,6 +31,12 @@ CREATE TABLE geninfo (
 COPY geninfo (price, location, listingid, updatedprice, title, reviewCount, rating, type, photos) FROM '/Users/averylizette/Desktop/Recommendations/database/generatedata/cassandraDataGeneration/geninfo.csv' WITH HEADER = TRUE;
 COPY lookup (listingid, price, location, updatedprice) FROM '/Users/averylizette/Desktop/Recommendations/database/generatedata/cassandraDataGeneration/lookup.csv' WITH HEADER = TRUE;
 
+COPY geninfo (price, location, listingid, updatedprice, title, reviewCount, rating, type, photos) FROM '/var/www/Recommendations/database/generatedata/cassandraDataGeneration/Casstest.csv' WITH HEADER = TRUE;
+
+COPY lookup (listingid, price, location, updatedprice) FROM '/var/www/Recommendations/database/generatedata/cassandraDataGeneration/CasTable1test.csv' WITH HEADER = TRUE;
+
+/var/www/Recommendations/database/generatedata/cassandraDataGeneration/Casstest.csv
+/var/www/Recommendations/database/generatedata/cassandraDataGeneration/CasTable1test.csv
 
 Select * 
 FROM genInfo

@@ -1,11 +1,11 @@
 var faker = require('faker');
 const fs = require('fs');
-const casData = fs.createWriteStream('Casstest.csv');
+const casData = fs.createWriteStream('geninfo100.csv');
 const cities = require('./citiesArray.js').cities
 casData.write('price,location,listingid,updatedprice,title,reviewCount,rating,type,photos\n', 'utf8');
 
 
-const table1 = fs.createWriteStream('CasTable1test.csv');
+const table1 = fs.createWriteStream('lookup100.csv');
 table1.write('listingId,location,price,updatedprice\n', 'utf8');
 
 
@@ -19,7 +19,7 @@ var images =[imageArr1, imageArr2, imageArr3, imageArr4, imageArr5];
 var listingTypes = ['hotel room', 'entire place', 'private room', 'shared room', 'entire place']
 
 function writeTenMillionUsers(writer, encoding, callback, writer2) {
-  let i = 10000000;
+  let i = 5000;
   let id = 0;
   function write() {
     let ok = true;
