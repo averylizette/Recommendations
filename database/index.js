@@ -1,7 +1,8 @@
 const cassandra = require('cassandra-driver');
-const client = new cassandra.Client({ contactPoints: ['127.0.0.1'], localDataCenter: 'datacenter1', keyspace: 'recommendations' });
+const client = new cassandra.Client({ contactPoints: ['3.134.95.43'], localDataCenter: 'datacenter1', keyspace: 'recommendations' });
 const id = 10000000
 
+client.connect().then(()=> console.log('connected'))
 
 const getPriceAndLocation = (listingid, callback) => {
   let query = 'SELECT * FROM lookup WHERE listingid = ?';

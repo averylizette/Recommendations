@@ -68,7 +68,7 @@ class Recommendation extends React.Component {
   constructor (props) {
     super(props);
     this.state = {
-      currIndex: 0,np
+      currIndex: 0,
       currListing: [],
       allListings: [],
       pic1: [],
