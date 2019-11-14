@@ -82,7 +82,7 @@ class Recommendation extends React.Component {
   componentDidMount () {
     console.log(this.props.listingId)
     // http://3.134.95.43:3000/
-    axios.get(`recommendations/${this.props.listingId}`)
+    axios.get(`http://ec2-18-220-48-181.us-east-2.compute.amazonaws.com:3000/recommendations/${this.props.listingId}`)
       .then((res) => {
         console.log(res.data)
         this.setState({allListings: res.data})

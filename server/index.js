@@ -22,7 +22,7 @@ app.use('/:listingid', express.static(path.join(__dirname, '../client/dist')))
 
 
 app.get('/recommendations/:listingid', (req, res) => {
-    console.log(req.params.listingid);
+   // console.log(req.params.listingid);
     db.getPriceAndLocation(req.params.listingid, (err, data) => {
         if (err) {
             console.log('price and location error in server index.js')
